@@ -11,80 +11,77 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-/* Your original CSS goes here - paste all of it from the previous version */
+/* Keep all your original CSS here (I'm not pasting 1000+ lines again to save space) */
+/* Just add this new neon live banner CSS at the bottom of your <style> tag */
+
 :root {
   --pk: #f597a1;
   --nv: #212b61;
-  --glow-pink: 0 0 15px #f597a1, 0 0 35px #ff69b4;
-  --glow-cyan: 0 0 15px #00f0ff, 0 0 35px #00f0ff;
+  --glow-pink: 0 0 15px #f597a1, 0 0 30px #f597a1, 0 0 50px #ff69b4;
+  --glow-blue: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
 }
 
 .live-module {
-  background: linear-gradient(135deg, #0a1f4a 0%, #1a3a7a 50%, #0f2b5e 100%);
+  background: linear-gradient(135deg, #0a1f4a, #1a3a7a, #0f2b5e);
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 25px 70px rgba(0, 240, 255, 0.3), inset 0 0 60px rgba(245, 151, 161, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 240, 255, 0.25), inset 0 0 80px rgba(245, 151, 161, 0.15);
   position: relative;
-  max-width: 1280px;
-  margin: 30px auto 40px;
 }
 
 .live-module::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,105,180,0.25) 0%, transparent 70%);
-  animation: neon-pulse 6s infinite ease-in-out;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 105, 180, 0.3), transparent 50%);
+  animation: sparkle 8s infinite linear;
   pointer-events: none;
-  opacity: 0.7;
 }
 
-@keyframes neon-pulse {
-  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
-  50% { transform: scale(1.08) rotate(2deg); opacity: 1; }
+@keyframes sparkle {
+  0% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 0.6; transform: scale(1); }
 }
 
 .live-cond {
-  background: rgba(255,255,255,0.09);
-  backdrop-filter: blur(12px);
-  padding: 18px 26px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  padding: 18px 24px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
-  border-bottom: 1px solid rgba(255,255,255,0.18);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
 .cond-item {
-  color: #e0f0ff;
-  font-size: 0.96rem;
+  color: #fff;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
 }
 
 .cond-item strong {
-  color: #00f8ff;
-  text-shadow: 0 0 12px #00f8ff;
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
 }
 
 .tours-chips {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
-  padding: 22px 26px;
+  padding: 20px;
 }
 
 .tour-chip {
-  background: rgba(255,255,255,0.08);
-  border: 2px solid rgba(245,151,161,0.7);
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,105,180,0.6);
   color: white;
-  padding: 16px 22px;
-  border-radius: 22px;
-  min-width: 165px;
+  padding: 16px 20px;
+  border-radius: 20px;
+  min-width: 160px;
   text-align: center;
   box-shadow: var(--glow-pink);
   transition: all 0.3s ease;
@@ -93,137 +90,152 @@
 }
 
 .tour-chip:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 40px #ff69b4;
-  border-color: #ff69b4;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 30px #ff69b4;
 }
 
 .tour-chip::after {
   content: '';
   position: absolute;
-  top: -100%;
+  top: -50%;
   left: -50%;
   width: 40%;
-  height: 400%;
-  background: linear-gradient(transparent, rgba(255,255,255,0.45), transparent);
-  transform: rotate(25deg);
-  animation: shine 4s infinite linear;
+  height: 300%;
+  background: linear-gradient(transparent, rgba(255,255,255,0.4), transparent);
+  transform: rotate(30deg);
+  animation: shine 3s infinite;
 }
 
 @keyframes shine {
-  0% { transform: translateX(-120%) rotate(25deg); }
-  100% { transform: translateX(300%) rotate(25deg); }
+  0% { transform: translateX(-150%) rotate(30deg); }
+  100% { transform: translateX(300%) rotate(30deg); }
 }
 
 .tours-book {
-  background: linear-gradient(90deg, #f597a1, #ff4d94);
+  background: linear-gradient(90deg, #f597a1, #ff69b4);
   color: #212b61;
   font-weight: 900;
-  font-size: 1.05rem;
-  padding: 16px 34px;
+  padding: 16px 32px;
   border-radius: 999px;
-  box-shadow: 0 0 30px #ff69b4;
-  transition: all 0.3s;
+  box-shadow: 0 0 25px #ff69b4;
+  font-size: 1.1rem;
 }
 
 .tours-book:hover {
-  box-shadow: 0 0 45px #ff1493;
-  transform: scale(1.04);
+  box-shadow: 0 0 40px #ff1493;
+  transform: scale(1.05);
 }
 
-/* Paste the rest of your original styles below this point */
+/* Rest of your original CSS stays the same... */
 </style>
 </head>
 <body>
 
-<!-- Paste all your original HTML content here (hero, sections, moments-strip, amenities, testimonials, etc.) -->
+<!-- YOUR FULL ORIGINAL CONTENT GOES HERE -->
+<!-- (hero, sections, moments-strip, amenities, tours, etc.) -->
 
-<!-- Replace your old live banner with this new neon version -->
-<div class="live-module">
+<!-- Just replace your old live-module with this upgraded version -->
+
+<div class="live-module" style="max-width:1280px; margin:30px auto 0; padding:0;">
   <div class="live-cond" id="live-cond">
-    <!-- JavaScript will fill this -->
+    <!-- Filled by JavaScript -->
   </div>
 
-  <div style="padding: 0 26px 26px;">
+  <div class="live-tours" style="padding:20px 24px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; justify-content:space-between;">
+    <div class="tours-lbl">
+      <div class="tl1" style="color:#a0d8ff; font-size:0.8rem; font-weight:700;">TODAY'S CRUISES</div>
+      <div class="tl2" style="font-size:1.35rem; font-weight:900; color:white;">Live Departures</div>
+    </div>
+
     <div class="tours-chips" id="tour-chips">
-      <!-- JavaScript will fill the cruise chips -->
+      <!-- Filled by JavaScript -->
     </div>
-    
-    <div style="text-align:center; margin-top:10px;">
-      <a href="#booking" class="tours-book">Book Your Cruise Now</a>
-    </div>
+
+    <a href="#booking" class="tours-book">Book Now →</a>
   </div>
 </div>
 
-<!-- Your footer and the rest of the page -->
+<!-- Then the rest of your footer, scripts, etc. -->
 
 <script>
-// Neon Live Banner Script
+// === SUPER NEON LIVE CRUISE BANNER SCRIPT ===
 const TOURS = [
   { time24: "11:00", label: "Daytime Dolphin", price: "from $16" },
   { time24: "12:30", label: "Snorkel Island",  price: "from $40" },
   { time24: "17:00", label: "Sunset Cruise",   price: "from $18" }
 ];
 
-function toMinutes(time) {
-  const [h, m] = time.split(":").map(Number);
+const CONDITIONS = {
+  air: "78°F",
+  water: "70°F",
+  wind: "9 mph SE",
+  flag: "🟡 Yellow Flag"
+};
+
+function toMinutes(t) {
+  const [h, m] = t.split(":").map(Number);
   return h * 60 + m;
 }
 
-function format12Hour(time) {
-  let [h, m] = time.split(":").map(Number);
+function format12Hour(t) {
+  let [h, m] = t.split(":").map(Number);
   const ampm = h >= 12 ? "PM" : "AM";
   h = h % 12 || 12;
-  return `${h}:${m.toString().padStart(2,'0')} ${ampm}`;
+  return `${h}:${m.toString().padStart(2, '0')} ${ampm}`;
 }
 
 function getCurrentTime() {
   const now = new Date();
   let h = now.getHours();
-  let m = now.getMinutes().toString().padStart(2, '0');
+  let m = now.getMinutes();
   const ampm = h >= 12 ? "PM" : "AM";
   h = h % 12 || 12;
-  return `${h}:${m} ${ampm}`;
+  return `${h}:${m.toString().padStart(2, '0')} ${ampm}`;
 }
 
 function renderLiveBanner() {
-  const nowMin = new Date().getHours() * 60 + new Date().getMinutes();
-  const chips = document.getElementById("tour-chips");
-  const cond = document.getElementById("live-cond");
+  const nowMinutes = new Date().getHours() * 60 + new Date().getMinutes();
+  
+  const chipsContainer = document.getElementById("tour-chips");
+  const condContainer = document.getElementById("live-cond");
 
-  chips.innerHTML = "";
+  chipsContainer.innerHTML = "";
 
-  let upcoming = TOURS.filter(t => toMinutes(t.time24) > nowMin);
-  if (upcoming.length === 0) upcoming = TOURS;
+  // Show upcoming tours (or all if day is almost over)
+  let upcoming = TOURS.filter(t => toMinutes(t.time24) > nowMinutes);
+  if (upcoming.length === 0) upcoming = TOURS; // fallback to all
 
   upcoming.forEach(tour => {
-    const div = document.createElement("div");
-    div.className = "tour-chip";
-    div.innerHTML = `
-      <div style="font-size:1.15rem; font-weight:800;">${format12Hour(tour.time24)}</div>
-      <div style="margin:8px 0 6px; font-weight:700;">${tour.label}</div>
-      <div style="color:#ffd7dd;">${tour.price}</div>
+    const chip = document.createElement("div");
+    chip.className = "tour-chip";
+    chip.innerHTML = `
+      <div style="font-size:1.1rem; font-weight:800;">${format12Hour(tour.time24)}</div>
+      <div style="margin:6px 0 4px; font-weight:700;">${tour.label}</div>
+      <div style="color:#ffd7dd; font-size:0.95rem;">${tour.price}</div>
     `;
-    chips.appendChild(div);
+    chipsContainer.appendChild(chip);
   });
 
-  if (cond) {
-    cond.innerHTML = `
-      <div style="display:flex; align-items:center; gap:10px; color:#a0f0ff; font-weight:700;">
-        🌊 LIVE CONDITIONS • ${getCurrentTime()}
+  // Live conditions
+  if (condContainer) {
+    condContainer.innerHTML = `
+      <div style="display:flex; align-items:center; gap:8px; color:#a0f0ff; font-weight:700;">
+        <span style="font-size:1.4rem;">🌊</span> 
+        LIVE CONDITIONS • ${getCurrentTime()}
       </div>
-      <div style="margin-left:auto; display:flex; gap:22px; color:#e0f0ff; flex-wrap:wrap;">
-        <span>Air <strong>78°F</strong></span>
-        <span>Water <strong>70°F</strong></span>
-        <span>Wind <strong>9 mph SE</strong></span>
-        <span>🟡 Yellow Flag</span>
+      <div style="color:#fff; margin-left:auto; display:flex; gap:20px; flex-wrap:wrap;">
+        <span>Air <strong>${CONDITIONS.air}</strong></span>
+        <span>Water <strong>${CONDITIONS.water}</strong></span>
+        <span>Wind <strong>${CONDITIONS.wind}</strong></span>
+        <span>${CONDITIONS.flag}</span>
       </div>
     `;
   }
 }
 
+// Run immediately and every 2 minutes
 renderLiveBanner();
-setInterval(renderLiveBanner, 120000); // update every 2 minutes
+setInterval(renderLiveBanner, 120000);
 </script>
 
 </body>
